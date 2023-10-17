@@ -11,6 +11,12 @@ class BooksController < ApplicationController
       render json: book.errors, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    Book.find(params[:id]).destroy!
+    head :no_contents
+  end
+
   private
   def book_params
     params.require(:book).permit(:author, :title)
