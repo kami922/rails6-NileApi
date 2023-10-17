@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   def destroy
     Book.find(params[:id]).destroy!
-    head :no_contents
+    head :no_content
   end
 
   private
@@ -24,3 +24,4 @@ class BooksController < ApplicationController
 end
  # curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/books -v
 #
+#curl http://localhost:3000/books

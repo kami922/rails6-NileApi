@@ -16,7 +16,7 @@ module Api
 
       def destroy
         Book.find(params[:id]).destroy!
-        head :no_contents
+        head :no_content
       end
 
       private
@@ -24,8 +24,9 @@ module Api
         params.require(:book).permit(:author, :title)
       end
     end
-     # curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/books -v
-    #
   end
 end
 # ➜  Nile git:(p8) ✗ curl http://localhost:3000/api/v1/books
+#curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/api/v1/books -v
+
+# curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/books -v
