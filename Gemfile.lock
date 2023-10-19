@@ -109,6 +109,8 @@ GEM
     mini_portile2 (2.8.4)
     minitest (5.20.0)
     msgpack (1.7.2)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.7)
       date
       net-protocol
@@ -217,6 +219,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
+    uri (0.10.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -247,6 +250,9 @@ DEPENDENCIES
   factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  net-http
+  net-imap
+  net-smtp
   puma (~> 4.1)
   rails (~> 6.0.6, >= 6.0.6.1)
   rspec-rails
@@ -257,6 +263,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
+  uri (= 0.10.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
