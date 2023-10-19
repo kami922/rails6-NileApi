@@ -8,8 +8,10 @@ module Api
       end
 
       def create
-        author = Author.create!(author_params)
-        book = Book.new(book_params.merge(author_id:author.id))
+        # author = Author.create!(author_params)
+        # book = Book.new(book_params.merge(author_id:author.id))
+
+        UpdateSkuJob.perform_later(book_params[:name])
         if book.save
           render json: BookRepresenter.new(book).as_json, status: :created
         else
@@ -43,6 +45,6 @@ module Api
   end
 end
 # ➜  Nile git:(p8) ✗ curl http://localhost:3000/api/v1/books
-#curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/api/v1/books -v
+#curl --header 'Content-Type: application/json' --request POST --data '{'author':'kamran','title':'book1'}'  http://localhost:3000/api/v1/books -v
 
-# curl --header "Content-Type: application/json" --request POST --data '{"author":"kamran","title":"book1"}'  http://localhost:3000/books -v
+# curl --header 'Content-Type: application/json' --request POST --data '{'author':'kamran','title':'book1'}'  http://localhost:3000/books -v
