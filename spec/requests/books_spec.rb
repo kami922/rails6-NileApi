@@ -83,6 +83,7 @@ describe 'Books API', type: :request do
     )
     end
   end
+
   describe 'DELETE /books/:id' do
     let!(:book) { FactoryBot.create(:book, title: '1984', author: first_author) }
     it 'deletes a book' do
