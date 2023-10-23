@@ -9,7 +9,6 @@ module Api
         render json:{ token:'123'}, status: :created
       end
 
-
       private
       def param_missing(e)
         render json: { error: e.message },status: :unprocessable_entity
