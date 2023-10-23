@@ -35,7 +35,6 @@ module Api
 
       def author_params
         params.require(:author).permit(:first_name,:last_name,:age)
-
       end
 
       def book_params
