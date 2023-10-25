@@ -31,7 +31,9 @@ module Api
       def authenticate_user
         token,_option = token_and_options(request)
         user_id = AuthenticationTokenService.decode(token)
-        raise user_id.inspect
+        User.find(user_id)
+      rescue ActiveRecord::RecordNotFound
+        render status: :unauthorized
       end
 
       def limit
@@ -51,6 +53,7 @@ module Api
     end
   end
 end
+
 # ➜  Nile git:(p8) ✗ curl http://localhost:3000/api/v1/books
 #curl --header 'Content-Type: application/json' --request POST --data '{'author':'kamran','title':'book1'}'  http://localhost:3000/api/v1/books -v
 
