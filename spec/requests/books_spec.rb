@@ -69,7 +69,8 @@ describe 'Books API', type: :request do
       expect {
       post '/api/v1/books',params: {
          book:{ title: 'maritans'},
-         author:{first_name:'andy',last_name:'weir',age:'48'}}
+         author:{first_name:'andy',last_name:'weir',age:'48'},
+        headers: {"Authorrization" => "Bearer 123"}}
     }.to change{Book.count}.from(0).to(1)
     expect(response).to have_http_status(:created)
     expect(Author.count).to eq(1)
@@ -94,5 +95,3 @@ describe 'Books API', type: :request do
     end
   end
 end
-
-

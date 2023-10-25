@@ -1,6 +1,8 @@
 module Api
   module V1
     class BooksController < ApplicationController
+    include ActionController::HttpAuthentication::Token
+      before_action :authenticate_user, only: [:create, :destroy]
       def index
         # render json: Book.all
         books = Book.limit(limit).offset(params[:offset])
@@ -25,6 +27,12 @@ module Api
       end
 
       private
+
+      def authenticate_user
+        token,_option = token_and_options(request)
+        user_id = AuthenticationTokenService.decode(token)
+        raise user_id.inspect
+      end
 
       def limit
         [
