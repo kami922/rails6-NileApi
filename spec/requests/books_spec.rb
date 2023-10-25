@@ -65,12 +65,13 @@ describe 'Books API', type: :request do
   end
 
   describe 'POST /books' do
+    let!(:user) {FactoryBot.create(:user,password:"Password1")}
     it 'creates a new book' do
       expect {
       post '/api/v1/books',params: {
          book:{ title: 'maritans'},
          author:{first_name:'andy',last_name:'weir',age:'48'},
-        headers: {"Authorrization" => "Bearer 123"}}
+        headers: {"Authorrization" => "Bearer 123"}}# awt token missing fro jwt website
     }.to change{Book.count}.from(0).to(1)
     expect(response).to have_http_status(:created)
     expect(Author.count).to eq(1)

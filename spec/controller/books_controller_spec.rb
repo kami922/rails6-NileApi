@@ -12,8 +12,13 @@ RSpec.describe Api::V1::BooksController, type: :controller do
 
   describe 'POST create' do
     let(:book_name) { 'Harry potter' }
+    let(:user){FactoryBot.create(:user,password:'Password1')}
+    before do
+      allow(AuthenticationTokenService).to receive(:decode).and_return(user.id)
+    end
     it 'calls UpdateSkuJob with correct calls' do
       post :create, params: {
+
         author: { first_name: 'JK', last_name: 'Rowling', age: 48 },
         book: { title: book_name }
       }
